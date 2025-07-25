@@ -1,0 +1,98 @@
+---
+title: "Uso de Paletas de Colores Wada"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Uso de Paletas de Colores Wada}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```r 
+library(wadaPalettes)
+library(ggplot2)
+```
+
+```{r , echo=FALSE, include=FALSE}
+library(ggplot2)
+```
+
+
+## Visualización de ejemplos con `ggplot2`
+
+### 1. Gráfico de barras
+
+```{r , echo=FALSE}
+ggplot(mpg, aes(class, fill = class)) +
+  geom_bar() +
+  scale_fill_manual(values = crear_paleta_colores(335, (length(unique(mpg$class))))) +
+  theme_minimal() +
+  labs(title = "Gráfico de barras con paleta Wada 335")
+```
+
+### 2. Columnas apiladas
+
+```{r , echo=FALSE}
+ggplot(mpg, aes(x = manufacturer, fill = class)) +
+  geom_bar(position = "stack") +
+  scale_fill_manual(values = crear_paleta_colores(335, (length(unique(mpg$class))))) +
+  theme_minimal() +
+  labs(title = "Columnas apiladas con paleta Wada 335") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+### 3. Scatter plot
+
+```{r , echo=FALSE}
+ggplot(mpg, aes(x = displ, y = hwy, color = class)) +
+  geom_point(size = 3) +
+  scale_color_manual(values = crear_paleta_colores(335, (length(unique(mpg$class))))) +
+  theme_minimal() +
+  labs(title = "Scatter plot con paleta Wada 335")
+```
+
+### 4. Boxplot
+
+```{r , echo=FALSE}
+ggplot(mpg, aes(x = class, y = hwy, fill = class)) +
+  geom_boxplot() +
+  scale_fill_manual(values = crear_paleta_colores(335, (length(unique(mpg$class))))) +
+  theme_minimal() +
+  labs(title = "Boxplot con paleta Wada 335")
+```
+
+### 5. Área
+
+```{r , echo=FALSE}
+if (requireNamespace("ggplot2", quietly = TRUE)) {
+  ggplot(economics_long, aes(x = date, y = value01, fill = variable)) +
+    geom_area() +
+    scale_fill_manual(values = crear_paleta_colores(335, (length(unique(economics_long$variable))))) +
+    theme_minimal() +
+    labs(title = "Área con paleta Wada 335")
+}
+```
+
+### 6. Líneas
+
+```{r , echo=FALSE}
+if (requireNamespace("ggplot2", quietly = TRUE)) {
+  ggplot(economics_long, aes(x = date, y = value01, color = variable)) +
+    geom_line(size = 1.2) +
+    scale_color_manual(values = crear_paleta_colores(335, (length(unique(economics_long$variable))))) +
+    theme_minimal() +
+    labs(title = "Líneas con paleta Wada 335")
+}
+```
+
+### Vista previa de combinaciones
+
+```r
+ver_combinacion_wada(331)
+ver_combinacion_wada(335)
+ver_combinacion_wada(342)
+```
+
+---
+
+Estas combinaciones fueron extraídas del libro "A Dictionary of Color Combinations" de Sanzo Wada, y permiten una integración artística y armónica en visualizaciones de datos.
+

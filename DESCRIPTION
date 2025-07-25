@@ -1,0 +1,25 @@
+Package: wadaPalettes
+Type: Package
+Title: Paletas de colores Wada Sanzo con respaldo local y descarga
+Version: 0.1.0
+Authors@R: person("Tu", "Nombre", email = "tuemail@example.com", role = c("aut", "cre"))
+Description: Funciones para obtener paletas Wada Sanzo desde JSON local o remoto, con cache y visualización.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports:
+  jsonlite,
+  httr,
+  dplyr,
+  tidyr,
+  purrr,
+  tibble,
+  grDevices,
+  ggplot2
+Suggests:
+  testthat (>= 3.0.0),
+  knitr,
+  rmarkdown
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Config/testthat/edition: 3
